@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora Interactiva</title>
+</head>
+<body>
+    <script>
+        // === FUNCIONES DE CADA OPERACIÓN ===
+        function sumar(a, b) {2
+            return a + b;
+        }
+
+        function restar(a, b) {
+            return a - b;
+        }
+
+        function multiplicar(a, b) {
+            return a * b;
+        }
+
+        function dividir(a, b) {
+            if (b === 0) {
+                return "Error: No se puede dividir por cero";
+            }
+            return a / b;
+        }
+
+        // === FUNCIÓN PRINCIPAL ===
+        function calculadora() {
+            let opcion;
+
+            while (opcion !== "5") {
+                // Mostrar menú
+                opcion = prompt(
+                    "=== CALCULADORA ===\n" +
+                    "1) Sumar\n" +
+                    "2) Restar\n" +
+                    "3) Multiplicar\n" +
+                    "4) Dividir\n" +
+                    "5) Salir\n\n" +
+                    "Selecciona una opción (1-5):"
+                );
+
+                // Salir si elige 5
+                if (opcion === "5") {
+                    alert("¡Gracias por usar la calculadora! Hasta luego ");
+                    break;
+                }
+
+                // Pedir números
+                let num1 = parseFloat(prompt("Escribe el primer número:"));
+                let num2 = parseFloat(prompt("Escribe el segundo número:"));
+
+                // Validar que sean números
+                if (isNaN(num1) || isNaN(num2)) {
+                    alert("Por favor, escribe números válidos. Intenta de nuevo.");
+                    continue;
+                }
+
+                let resultado;
+                let nombreOperacion;
+
+                // Elegir operación
+                switch (opcion) {
+                    case "1":
+                        resultado = sumar(num1, num2);
+                        nombreOperacion = "Suma";
+                        break;
+                    case "2":
+                        resultado = restar(num1, num2);
+                        nombreOperacion = "Resta";
+                        break;
+                    case "3":
+                        resultado = multiplicar(num1, num2);
+                        nombreOperacion = "Multiplicación";
+                        break;
+                    case "4":
+                        resultado = dividir(num1, num2);
+                        nombreOperacion = "División";
+                        break;
+                    default:
+                        alert("Opción no válida. Intenta de nuevo.");
+                        continue;
+                }
+
+                // Mostrar resultado
+                alert(`${nombreOperacion}: ${num1} y ${num2} = ${resultado}`);
+                console.log(`${nombreOperacion}: ${num1} y ${num2} = ${resultado}`);
+            }
+        }
+
+        // Ejecutar la calculadora
+        calculadora();
+    </script>
+</body>
+</html>
